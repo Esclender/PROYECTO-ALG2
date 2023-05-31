@@ -118,6 +118,7 @@ public class frmLogin extends javax.swing.JFrame {
             return;
         }
         
+        
         frmPrincipal miPrincipal = new frmPrincipal();
         this.setVisible(false);
         miPrincipal.setDatos(misDatos);

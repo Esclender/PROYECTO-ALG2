@@ -37,8 +37,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuArchivoProductos = new javax.swing.JMenuItem();
         mnuArchivoUsuarios = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        mnuArchivoCambioClave = new javax.swing.JMenuItem();
-        mnuArchivoCambioUsuario = new javax.swing.JMenuItem();
         mnuArchivoSalir = new javax.swing.JMenuItem();
         mnuMovimientos = new javax.swing.JMenu();
         mnuMovimientosNuevaFactura = new javax.swing.JMenuItem();
@@ -84,24 +82,6 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         mnuArchivo.add(mnuArchivoUsuarios);
         mnuArchivo.add(jSeparator1);
-
-        mnuArchivoCambioClave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/password24x24.png"))); // NOI18N
-        mnuArchivoCambioClave.setText("Cambio Clave");
-        mnuArchivoCambioClave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuArchivoCambioClaveActionPerformed(evt);
-            }
-        });
-        mnuArchivo.add(mnuArchivoCambioClave);
-
-        mnuArchivoCambioUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/usuarioCambio24x24.png"))); // NOI18N
-        mnuArchivoCambioUsuario.setText("Cambio Usuario");
-        mnuArchivoCambioUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuArchivoCambioUsuarioActionPerformed(evt);
-            }
-        });
-        mnuArchivo.add(mnuArchivoCambioUsuario);
 
         mnuArchivoSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir24x24.png"))); // NOI18N
         mnuArchivoSalir.setText("Salir");
@@ -182,21 +162,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             mnuMovimientosReporteFactura.setEnabled(false);
         }
     }//GEN-LAST:event_formWindowOpened
-    private void mnuArchivoCambioUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArchivoCambioUsuarioActionPerformed
-       this.setVisible(false);
-       frmLogin miLogin = new frmLogin();
-       miLogin.setDatos(misDatos);
-       miLogin.setLocationRelativeTo(null);
-       miLogin.setVisible(true);
-    }//GEN-LAST:event_mnuArchivoCambioUsuarioActionPerformed
-    private void mnuArchivoCambioClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuArchivoCambioClaveActionPerformed
-        frmCambioClave miCambio = new frmCambioClave(this, rootPaneCheckingEnabled);
-        miCambio.setClave(clave);
-        miCambio.setUsuario(usuario);
-        miCambio.setDatos(misDatos);
-        miCambio.setLocationRelativeTo(this);
-        miCambio.setVisible(true);
-    }//GEN-LAST:event_mnuArchivoCambioClaveActionPerformed
     private void mnuMovimientosNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMovimientosNuevaFacturaActionPerformed
         frmFactura miFactura = new frmFactura();
         miFactura.setDatos(misDatos);
@@ -241,8 +206,6 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenu mnuArchivo;
-    private javax.swing.JMenuItem mnuArchivoCambioClave;
-    private javax.swing.JMenuItem mnuArchivoCambioUsuario;
     private javax.swing.JMenuItem mnuArchivoClientes;
     private javax.swing.JMenuItem mnuArchivoProductos;
     private javax.swing.JMenuItem mnuArchivoSalir;
