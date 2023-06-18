@@ -3,7 +3,12 @@ package Formularios;
 import Clases.Datos;
 import Clases.Producto;
 import Clases.Utilidades;
+import java.awt.Color;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class frmProductos extends javax.swing.JInternalFrame {
@@ -54,8 +59,10 @@ public class frmProductos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtIdProducto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
@@ -81,37 +88,52 @@ public class frmProductos extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtNota = new javax.swing.JTextArea();
+        txtIdProducto = new javax.swing.JTextField();
+
+        jLabel6.setText("jLabel6");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jTextField1.setText("jTextField1");
 
         setClosable(true);
         setTitle("Productos");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
 
         jLabel1.setText("ID Producto *");
 
-        txtIdProducto.setEnabled(false);
-
         jLabel2.setText("Descripción *");
 
         txtDescripcion.setEnabled(false);
+        txtDescripcion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescripcionFocusLost(evt);
+            }
+        });
 
-        txtPrecio.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtPrecio.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtPrecio.setEnabled(false);
+        txtPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecioFocusLost(evt);
+            }
+        });
 
         jLabel3.setText("Nota");
 
@@ -198,7 +220,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancelar24x24.png"))); // NOI18N
-        btnCancelar.setToolTipText("Guardar registro");
+        btnCancelar.setToolTipText("Cancelar registro");
         btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,6 +303,11 @@ public class frmProductos extends javax.swing.JInternalFrame {
 
         cboIGV.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0 %", "18 %", "19 %" }));
         cboIGV.setEnabled(false);
+        cboIGV.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboIGVFocusLost(evt);
+            }
+        });
 
         jLabel5.setText("Precio *");
 
@@ -288,6 +315,13 @@ public class frmProductos extends javax.swing.JInternalFrame {
         txtNota.setRows(5);
         txtNota.setEnabled(false);
         jScrollPane2.setViewportView(txtNota);
+
+        txtIdProducto.setEnabled(false);
+        txtIdProducto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdProductoFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,7 +338,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1)
                             .addComponent(jScrollPane1)
@@ -320,38 +354,38 @@ public class frmProductos extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel3)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtDescripcion)
+                                    .addComponent(jScrollPane2)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
+                                                .addGap(54, 54, 54)
                                                 .addComponent(jLabel4)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cboIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jScrollPane2))))
+                                                .addComponent(cboIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 36, Short.MAX_VALUE)))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtIdProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(cboIGV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(16, 16, 16)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -365,7 +399,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -409,31 +443,39 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNuevoActionPerformed
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
+        Border warnBorder = new LineBorder(new Color(250,0,0), 1);
+        
         //validaciones
         if (txtIdProducto.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un ID");
             txtIdProducto.requestFocusInWindow();
+            txtIdProducto.setBorder(warnBorder);
             return;
         }
+        
         if (txtDescripcion.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar una Descripcion");
             txtDescripcion.requestFocusInWindow();
+            txtDescripcion.setBorder(warnBorder);
             return;
         }
         
         if (txtPrecio.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un Precio");
             txtPrecio.requestFocusInWindow();
+            txtPrecio.setBorder(warnBorder);
             return;
         }
         if (!Utilidades.isDouble(txtPrecio.getText())) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un valor numerico");
+            txtPrecio.setBorder(warnBorder);
             txtPrecio.requestFocusInWindow();
             return;
         }
         int precio = Integer.parseInt(txtPrecio.getText());
         if (precio <= 0) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un valor mayor a 0");
+            txtPrecio.setBorder(warnBorder);
             txtPrecio.requestFocusInWindow();
             return;
         }
@@ -441,6 +483,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         if (cboIGV.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un IGV");
             cboIGV.requestFocusInWindow();
+            cboIGV.setBorder(warnBorder);
             return;
         }
         
@@ -582,7 +625,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
          proAct--;
         if (proAct == -1) {
-            proAct = misDatos.numeroProductos()- 1;;
+            proAct = misDatos.numeroProductos()- 1;
         }
         mostrarResgistro();
     }//GEN-LAST:event_btnAnteriorActionPerformed
@@ -614,6 +657,38 @@ public class frmProductos extends javax.swing.JInternalFrame {
         mostrarResgistro();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void txtIdProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdProductoFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtIdProducto.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtIdProductoFocusLost
+
+    private void txtDescripcionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescripcionFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtDescripcion.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtDescripcionFocusLost
+
+    private void txtPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtPrecio.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtPrecioFocusLost
+
+    private void cboIGVFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboIGVFocusLost
+        // TODO add your handling code here:
+        JComboBox comboBx = new JComboBox();
+        Border defaultBorder = comboBx.getBorder();
+        
+        cboIGV.setBorder(defaultBorder);
+    }//GEN-LAST:event_cboIGVFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnterior;
@@ -627,17 +702,20 @@ public class frmProductos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton btnUltimo;
     private javax.swing.JComboBox cboIGV;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblProducto;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtIdProducto;

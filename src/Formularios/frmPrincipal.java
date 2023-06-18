@@ -40,10 +40,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuArchivoSalir = new javax.swing.JMenuItem();
         mnuMovimientos = new javax.swing.JMenu();
         mnuMovimientosNuevaFactura = new javax.swing.JMenuItem();
-        mnuMovimientosReporteFactura = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema de Facturación");
+        setTitle("Sistema de Facturación - MJ STORE");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -84,7 +83,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         mnuArchivo.add(jSeparator1);
 
         mnuArchivoSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir24x24.png"))); // NOI18N
-        mnuArchivoSalir.setText("Salir");
+        mnuArchivoSalir.setText("Cerrar sesion");
         mnuArchivoSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuArchivoSalirActionPerformed(evt);
@@ -105,10 +104,6 @@ public class frmPrincipal extends javax.swing.JFrame {
             }
         });
         mnuMovimientos.add(mnuMovimientosNuevaFactura);
-
-        mnuMovimientosReporteFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/facturaReporte24x24.png"))); // NOI18N
-        mnuMovimientosReporteFactura.setText("Reporte Factura");
-        mnuMovimientos.add(mnuMovimientosReporteFactura);
 
         jMenuBar1.add(mnuMovimientos);
 
@@ -155,11 +150,10 @@ public class frmPrincipal extends javax.swing.JFrame {
         ((DesktopConFondo) dpnEscritorio).setImagen("/Images/fondo.jpg");
         
         // establece permisos
-        if (perfil == 2) { // empleado
+        if (perfil == 2) { 
             mnuArchivoClientes.setEnabled(false);
             mnuArchivoProductos.setEnabled(false);
             mnuArchivoUsuarios.setEnabled(false);
-            mnuMovimientosReporteFactura.setEnabled(false);
         }
     }//GEN-LAST:event_formWindowOpened
     private void mnuMovimientosNuevaFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMovimientosNuevaFacturaActionPerformed
@@ -212,6 +206,5 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuArchivoUsuarios;
     private javax.swing.JMenu mnuMovimientos;
     private javax.swing.JMenuItem mnuMovimientosNuevaFactura;
-    private javax.swing.JMenuItem mnuMovimientosReporteFactura;
     // End of variables declaration//GEN-END:variables
 }

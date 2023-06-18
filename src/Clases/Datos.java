@@ -26,6 +26,7 @@ public class Datos {
     
     public Datos() {
         
+        
         //cargamos usuarios
         cargarUsuarios();
         
@@ -35,7 +36,7 @@ public class Datos {
         //cargamos clientes
         cargarClientes();
         
-        // Cargamos coniguracion
+        // Cargamos configuracion
         cargarConfiguracion();
     }
     
@@ -43,7 +44,6 @@ public class Datos {
         grabarUsuarios();
         grabarClientes();
         grabarProductos();
-        grabarConfiguracion();
     }
     public void grabarUsuarios() {
         FileWriter fw = null;
@@ -132,6 +132,8 @@ public class Datos {
             fr = new FileReader(archivo);
             br = new BufferedReader(fr);
             
+            
+            
             int pos;
             String aux ;
             String linea;
@@ -145,6 +147,7 @@ public class Datos {
             while ( (linea = br.readLine()) != null )   {
                 //extraemos id usuario
                 pos = linea.indexOf('|');
+                System.out.println("index " + pos);
                 aux = linea.substring(0, pos);
                 idUsuario = aux;
                 linea = linea.substring(pos + 1);

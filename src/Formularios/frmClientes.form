@@ -68,7 +68,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="txtIdCliente" min="-2" pref="114" max="-2" attributes="0"/>
-                              <EmptySpace pref="114" max="32767" attributes="0"/>
+                              <EmptySpace pref="123" max="32767" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cboIdentificacion" min="-2" pref="177" max="-2" attributes="0"/>
@@ -98,7 +98,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -135,12 +141,9 @@
                           </Group>
                           <Component id="dchFechaIngreso" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="46" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="148" max="-2" attributes="0"/>
@@ -164,6 +167,9 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtIdClienteFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -174,12 +180,18 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtNombresFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDireccion">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtDireccionFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
@@ -350,7 +362,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Images/cancelar24x24.png"/>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value="Guardar registro"/>
+            <Property name="toolTipText" type="java.lang.String" value="Cancelar registro"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -443,12 +455,18 @@
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cboIdentificacionFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApellidos">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtApellidosFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -459,6 +477,9 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtTelefonoFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -468,9 +489,9 @@
     <Component class="javax.swing.JComboBox" name="cboDistrito">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="38">
+          <StringArray count="37">
             <StringItem index="0" value="Comas"/>
-            <StringItem index="1" value="Chaclacayo"/>
+            <StringItem index="1" value="Chiclacayo"/>
             <StringItem index="2" value="Chorrillos"/>
             <StringItem index="3" value="El Agustino"/>
             <StringItem index="4" value="Jesus Maria"/>
@@ -506,11 +527,13 @@
             <StringItem index="34" value="San Borja"/>
             <StringItem index="35" value="Villa El Salvador"/>
             <StringItem index="36" value="Santa Anita"/>
-            <StringItem index="37" value=" "/>
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="cboDistritoFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
@@ -526,11 +549,17 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dchFechaNacimientoFocusLost"/>
+      </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="dchFechaIngreso">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="dchFechaIngresoFocusLost"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

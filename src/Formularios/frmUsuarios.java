@@ -2,7 +2,15 @@ package Formularios;
 
 import Clases.Datos;
 import Clases.Usuario;
+import java.awt.Color;
+import javax.swing.JComboBox;
+import javax.swing.border.Border;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class frmUsuarios extends javax.swing.JInternalFrame {
@@ -81,45 +89,80 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Usuarios");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
 
         jLabel1.setText("ID Usuario *");
 
         txtIdUsuario.setEnabled(false);
+        txtIdUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdUsuarioFocusLost(evt);
+            }
+        });
 
         jLabel2.setText("Nombres *");
 
         txtNombre.setEnabled(false);
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
 
         txtApellidos.setEnabled(false);
+        txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidosFocusLost(evt);
+            }
+        });
 
         jLabel3.setText("Apellidos *");
 
         jLabel4.setText("Clave *");
 
         txtClave.setEnabled(false);
+        txtClave.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtClaveFocusLost(evt);
+            }
+        });
+        txtClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Confirmación *");
 
         txtConfirmacion.setEnabled(false);
+        txtConfirmacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtConfirmacionFocusLost(evt);
+            }
+        });
 
         cboPerfil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione un Perfil", "Administrador", "Empleado" }));
         cboPerfil.setEnabled(false);
+        cboPerfil.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboPerfilFocusLost(evt);
+            }
+        });
 
         jLabel6.setText("Perfil *");
 
@@ -204,7 +247,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancelar24x24.png"))); // NOI18N
-        btnCancelar.setToolTipText("Guardar registro");
+        btnCancelar.setToolTipText("Cancelar registro");
         btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -411,26 +454,31 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnNuevoActionPerformed
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-              
+        Border warnBorder = new LineBorder(new Color(250,0,0), 1);
+        
         //validaciones     
         if (txtIdUsuario.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un ID");
             txtIdUsuario.requestFocusInWindow();
+            txtIdUsuario.setBorder(warnBorder);
             return;
         }
         if (cboPerfil.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un Perfil");
             cboPerfil.requestFocusInWindow();
+            cboPerfil.setBorder(warnBorder);
             return;
         }
         if (txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un Nombre(s)");
             txtNombre.requestFocusInWindow();
+            txtNombre.setBorder(warnBorder);
             return;
         }
         if (txtApellidos.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un Apellido(s)");
             txtApellidos.requestFocusInWindow();
+            txtApellidos.setBorder(warnBorder);
             return;
         }
         
@@ -440,23 +488,28 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         if (clave.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar una Clave");
             txtClave.requestFocusInWindow();
+            txtClave.setBorder(warnBorder);
             return;
         }
         if (confirmacion.equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar una Confirmación");
             txtConfirmacion.requestFocusInWindow();
+            txtConfirmacion.setBorder(warnBorder);
             return;
         }
         if (!clave.equals(confirmacion)) {
             JOptionPane.showMessageDialog(rootPane, "La clave y la confirmacion no son iguales");
             txtClave.setText("");
             txtConfirmacion.setText("");
+            txtConfirmacion.setBorder(warnBorder);
+            txtClave.setBorder(warnBorder);
             txtClave.requestFocusInWindow();
             return;
         }
         
         //si es nuevo, validamos que el usuario no exista
         int pos = misDatos.posicionUsuario(txtIdUsuario.getText());
+        System.out.println(nuevo + " nuevo");
         if (nuevo) {
             if (pos != -1) {
                 JOptionPane.showMessageDialog(rootPane, "Usuario ya existe");
@@ -630,6 +683,59 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         usuAct = pos;
         mostrarResgistro();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtClaveActionPerformed
+
+    private void txtIdUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdUsuarioFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtIdUsuario.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtIdUsuarioFocusLost
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtNombre.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtApellidos.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtApellidosFocusLost
+
+    private void txtClaveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtClave.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtClaveFocusLost
+
+    private void txtConfirmacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtConfirmacionFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtConfirmacion.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtConfirmacionFocusLost
+
+    private void cboPerfilFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboPerfilFocusLost
+        // TODO add your handling code here:
+        JComboBox comboBx = new JComboBox();
+        Border defaultBorder = comboBx.getBorder();
+        
+        cboPerfil.setBorder(defaultBorder);
+    }//GEN-LAST:event_cboPerfilFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

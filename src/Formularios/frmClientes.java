@@ -2,9 +2,15 @@ package Formularios;
 
 import Clases.Cliente;
 import Clases.Datos;
+import java.awt.Color;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import com.toedter.calendar.JDateChooser;
 
 public class frmClientes extends javax.swing.JInternalFrame {
 
@@ -37,7 +43,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         
         for (int i = 0; i < misDatos.numeroClientes(); i++) {
             registro[0] = misDatos.getClientes()[i].getIdCliente();
-            registro[1] = tipoIdentificacion(misDatos.getClientes()[i].getIdDistrito());
+            registro[1] = tipoIdentificacion(misDatos.getClientes()[i].getTipoIdentificacion());
             registro[2] = misDatos.getClientes()[i].getNombres();
             registro[3] = misDatos.getClientes()[i].getApellidos();
             registro[4] = misDatos.getClientes()[i].getDireccion();
@@ -142,33 +148,48 @@ public class frmClientes extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Clientes");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameOpened(evt);
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
 
         jLabel1.setText("Tipo de Identificación *");
 
         txtIdCliente.setEnabled(false);
+        txtIdCliente.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdClienteFocusLost(evt);
+            }
+        });
 
         jLabel2.setText("Nombres*");
 
         txtNombres.setEnabled(false);
+        txtNombres.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombresFocusLost(evt);
+            }
+        });
 
         txtDireccion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtDireccion.setEnabled(false);
+        txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDireccionFocusLost(evt);
+            }
+        });
 
         jLabel3.setText("Dirección *");
 
@@ -253,7 +274,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
         });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancelar24x24.png"))); // NOI18N
-        btnCancelar.setToolTipText("Guardar registro");
+        btnCancelar.setToolTipText("Cancelar registro");
         btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,26 +361,56 @@ public class frmClientes extends javax.swing.JInternalFrame {
 
         cboIdentificacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar un Tipo", "DNI", "Pasaporte", "DNI Extranjería" }));
         cboIdentificacion.setEnabled(false);
+        cboIdentificacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboIdentificacionFocusLost(evt);
+            }
+        });
 
         txtApellidos.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtApellidos.setEnabled(false);
+        txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidosFocusLost(evt);
+            }
+        });
 
         jLabel4.setText("Distrito *");
 
         txtTelefono.setEnabled(false);
+        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusLost(evt);
+            }
+        });
 
         jLabel8.setText("Teléfono *");
 
-        cboDistrito.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Comas", "Chaclacayo", "Chorrillos", "El Agustino", "Jesus Maria", "La Molina", "La Victoria", "Lince", "Lurigancho", "Lurin", "Magdalena", "Miraflores", "Pachacamac", "Pucusana", "Pueblo Libre", "Puente Piedra", "Punta Negra", "Punta Hermosa", "Rimac", "San Bartolo", "San Isidro", "Independencia", "San Juan De Miraflores", "San Luis", "San Martin De Porres", "San Miguel", "Santiago De Surco", "Surquillo", "Villa Maria Del Triunfo", "San Juan De Lurigancho", "Santa Maria Del Mar", "Santa Rosa", "Los Olivos", "Cieneguilla", "San Borja", "Villa El Salvador", "Santa Anita", " " }));
+        cboDistrito.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Comas", "Chiclacayo", "Chorrillos", "El Agustino", "Jesus Maria", "La Molina", "La Victoria", "Lince", "Lurigancho", "Lurin", "Magdalena", "Miraflores", "Pachacamac", "Pucusana", "Pueblo Libre", "Puente Piedra", "Punta Negra", "Punta Hermosa", "Rimac", "San Bartolo", "San Isidro", "Independencia", "San Juan De Miraflores", "San Luis", "San Martin De Porres", "San Miguel", "Santiago De Surco", "Surquillo", "Villa Maria Del Triunfo", "San Juan De Lurigancho", "Santa Maria Del Mar", "Santa Rosa", "Los Olivos", "Cieneguilla", "San Borja", "Villa El Salvador", "Santa Anita" }));
         cboDistrito.setEnabled(false);
+        cboDistrito.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cboDistritoFocusLost(evt);
+            }
+        });
 
         jLabel9.setText("Fecha Nac. *");
 
         jLabel10.setText("Fecha Ingreso *");
 
         dchFechaNacimiento.setEnabled(false);
+        dchFechaNacimiento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dchFechaNacimientoFocusLost(evt);
+            }
+        });
 
         dchFechaIngreso.setEnabled(false);
+        dchFechaIngreso.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                dchFechaIngresoFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -399,7 +450,7 @@ public class frmClientes extends javax.swing.JInternalFrame {
                                         .addComponent(cboDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cboIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -421,6 +472,11 @@ public class frmClientes extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
@@ -450,11 +506,8 @@ public class frmClientes extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(dchFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel9))
-                            .addComponent(dchFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(dchFechaIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -512,41 +565,49 @@ public class frmClientes extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnNuevoActionPerformed
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Border warnBorder = new LineBorder(new Color(250,0,0), 1);
         
         //validaciones
         if (txtIdCliente.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un ID");
             txtIdCliente.requestFocusInWindow();
+            txtIdCliente.setBorder(warnBorder);
             return;
         }
         if (cboIdentificacion.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un Tipo de Identificación");
             cboIdentificacion.requestFocusInWindow();
+            cboIdentificacion.setBorder(warnBorder);
             return;
         }
         if (txtNombres.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un Nombre");
             txtNombres.requestFocusInWindow();
+            txtNombres.setBorder(warnBorder);
             return;
         }
         if (txtApellidos.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un Apellido");
             txtApellidos.requestFocusInWindow();
+            txtApellidos.setBorder(warnBorder);
             return;
         }
         if (txtDireccion.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar una Dirección");
             txtDireccion.requestFocusInWindow();
+            txtDireccion.setBorder(warnBorder);
             return;
         }
         if (txtTelefono.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe digitar un Teléfono");
             txtTelefono.requestFocusInWindow();
+            txtTelefono.setBorder(warnBorder);
             return;
         }
         if (dchFechaNacimiento.getDate().after(new Date())) {
             JOptionPane.showMessageDialog(rootPane, "La Fecha de Nacimiento debe ser anterior a la fecha actual");
             dchFechaNacimiento.requestFocusInWindow();
+            dchFechaNacimiento.setBorder(warnBorder);
             return;
         }
         
@@ -735,6 +796,77 @@ public class frmClientes extends javax.swing.JInternalFrame {
         mostrarResgistro();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void txtIdClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdClienteFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtIdCliente.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtIdClienteFocusLost
+
+    private void cboIdentificacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboIdentificacionFocusLost
+        // TODO add your handling code here:
+        JComboBox comboBx = new JComboBox();
+        Border defaultBorder = comboBx.getBorder();
+        
+        cboIdentificacion.setBorder(defaultBorder);
+    }//GEN-LAST:event_cboIdentificacionFocusLost
+
+    private void txtNombresFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombresFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtNombres.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtNombresFocusLost
+
+    private void txtApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtApellidos.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtApellidosFocusLost
+
+    private void txtDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtDireccion.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtDireccionFocusLost
+
+    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
+        // TODO add your handling code here:
+        JTextField textField = new JTextField();
+        Border defaultBorder = textField.getBorder();
+        
+        txtTelefono.setBorder(defaultBorder);
+    }//GEN-LAST:event_txtTelefonoFocusLost
+
+    private void cboDistritoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cboDistritoFocusLost
+        // TODO add your handling code here:
+        JComboBox comboBx = new JComboBox();
+        Border defaultBorder = comboBx.getBorder();
+        
+        cboDistrito.setBorder(defaultBorder);
+    }//GEN-LAST:event_cboDistritoFocusLost
+
+    private void dchFechaNacimientoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dchFechaNacimientoFocusLost
+        // TODO add your handling code here:
+        JDateChooser nuevo = new JDateChooser();
+        Border defaultBorder = nuevo.getBorder();
+        
+        dchFechaNacimiento.setBorder(defaultBorder);
+    }//GEN-LAST:event_dchFechaNacimientoFocusLost
+
+    private void dchFechaIngresoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dchFechaIngresoFocusLost
+        // TODO add your handling code here:
+        JDateChooser nuevo = new JDateChooser();
+        Border defaultBorder = nuevo.getBorder();
+        
+        dchFechaIngreso.setBorder(defaultBorder);
+    }//GEN-LAST:event_dchFechaIngresoFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnterior;
